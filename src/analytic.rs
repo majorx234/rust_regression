@@ -20,3 +20,7 @@ impl LinearRegression for Analytic {
         (0.0, 0.0)
     }
 }
+
+fn determinat2x2matrix(a11: f64, a12: f64, a21: f64, a22: f64) -> f64 {
+    a11 * a22 - a12 * a21
+}
