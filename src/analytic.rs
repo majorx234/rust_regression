@@ -22,13 +22,23 @@ impl LinearRegression for Analytic {
 }
 
 fn points2quadric(points: Vec<(f64, f64)>) -> (f64, f64, f64, f64, f64, f64, f64) {
-    let a11: f64 = 0.0;
-    let a12: f64 = 0.0;
-    let a21: f64 = 0.0;
-    let a22: f64 = 0.0;
-    let b1: f64 = 0.0;
-    let b2: f64 = 0.0;
-    let c: f64 = 0.0;
+    let mut a11: f64 = 0.0;
+    let mut a12: f64 = 0.0;
+    let mut a21: f64 = 0.0;
+    let mut a22: f64 = 0.0;
+    let mut b1: f64 = 0.0;
+    let mut b2: f64 = 0.0;
+    let mut c: f64 = 0.0;
+
+    for (x, y) in points {
+        a11 += 1.0;
+        a12 += x;
+        a21 += x;
+        a22 += x * x;
+        b1 += -2.0 * y;
+        b2 += -2.0 * x * y;
+        c += y * y;
+    }
     // TODO implement calculation
     (a11, a12, a21, a22, b1, b2, c)
 }
