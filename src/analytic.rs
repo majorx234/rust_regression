@@ -31,12 +31,12 @@ fn points2quadric(points: Vec<(f64, f64)>) -> (f64, f64, f64, f64, f64, f64, f64
     let mut c: f64 = 0.0;
 
     for (x, y) in points {
-        a11 += 1.0;
+        a11 += x * x;
         a12 += x;
         a21 += x;
-        a22 += x * x;
-        b1 += -2.0 * y;
-        b2 += -2.0 * x * y;
+        a22 += 1.0;
+        b1 += -2.0 * x * y;
+        b2 += -2.0 * y;
         c += y * y;
     }
     // TODO implement calculation
