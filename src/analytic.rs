@@ -43,6 +43,61 @@ fn points2quadric(points: Vec<(f64, f64)>) -> (f64, f64, f64, f64, f64, f64, f64
     (a11, a12, a21, a22, b1, b2, c)
 }
 
+fn derive_dm(
+    a11: f64,
+    a12: f64,
+    a21: f64,
+    a22: f64,
+    b1: f64,
+    b2: f64,
+) -> (f64, f64, f64, f64, f64, f64) {
+    return (2.0 * a11, a12, a21, 0.0, b1, 0.0);
+}
+
+fn derive_dn(
+    a11: f64,
+    a12: f64,
+    a21: f64,
+    a22: f64,
+    b1: f64,
+    b2: f64,
+) -> (f64, f64, f64, f64, f64, f64) {
+    return (0.0, a12, a21, 2.0 * a22, 0.0, b2);
+}
+
+fn derive_dmdm(
+    a11: f64,
+    a12: f64,
+    a21: f64,
+    a22: f64,
+    b1: f64,
+    b2: f64,
+) -> (f64, f64, f64, f64, f64, f64) {
+    return (a11, 0.0, 0.0, 0.0, 0.0, 0.0);
+}
+
+fn derive_dndn(
+    a11: f64,
+    a12: f64,
+    a21: f64,
+    a22: f64,
+    b1: f64,
+    b2: f64,
+) -> (f64, f64, f64, f64, f64, f64) {
+    return (0.0, 0.0, 0.0, a22, 0.0, 0.0);
+}
+
+fn derive_dmdn(
+    a11: f64,
+    a12: f64,
+    a21: f64,
+    a22: f64,
+    b1: f64,
+    b2: f64,
+) -> (f64, f64, f64, f64, f64, f64) {
+    return (0.0, a12, a21, 0.0, 0.0, 0.0);
+}
+
 fn determinat2x2matrix(a11: f64, a12: f64, a21: f64, a22: f64) -> f64 {
     a11 * a22 - a12 * a21
 }
