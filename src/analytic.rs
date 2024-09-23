@@ -103,8 +103,8 @@ fn determinat2x2matrix(a11: f64, a12: f64, a21: f64, a22: f64) -> f64 {
 }
 
 fn solve2x2matrix(a11: f64, a12: f64, a21: f64, a22: f64, b1: f64, b2: f64) -> (f64, f64) {
-    let mut root1: f64 = 0.0;
-    let mut root2: f64 = 0.0;
+    let root1: f64 = (b1 - a12 * b2 / a21) / ((a21 / a22) + a11);
+    let root2: f64 = (b2 - a21 * b1 / a12) / ((a12 / a11) + a22);
 
     (root1, root2)
 }
