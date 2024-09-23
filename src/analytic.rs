@@ -101,3 +101,7 @@ fn derive_dmdn(
 fn determinat2x2matrix(a11: f64, a12: f64, a21: f64, a22: f64) -> f64 {
     a11 * a22 - a12 * a21
 }
+
+fn get_root_homogene_matrix(a11: f64, a12: f64, a21: f64, a22: f64) -> (f64, f64) {
+    (0.0, 0.0)
+}
