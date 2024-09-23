@@ -102,6 +102,16 @@ fn determinat2x2matrix(a11: f64, a12: f64, a21: f64, a22: f64) -> f64 {
     a11 * a22 - a12 * a21
 }
 
-fn get_root_homogene_matrix(a11: f64, a12: f64, a21: f64, a22: f64) -> (f64, f64) {
-    (0.0, 0.0)
+fn get_root_homogene_matrix(
+    a11: f64,
+    a12: f64,
+    a21: f64,
+    a22: f64,
+    b1: f64,
+    b2: f64,
+) -> (f64, f64) {
+    let mut root1: f64 = 0.0;
+    let mut root2: f64 = 0.0;
+
+    (root1, root2)
 }
