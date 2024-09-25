@@ -108,3 +108,23 @@ fn solve2x2matrix(a11: f64, a12: f64, a21: f64, a22: f64, b1: f64, b2: f64) -> (
 
     (root1, root2)
 }
+
+fn calc_regression_fct(points: Vec<(f64, f64)>) -> (f64, f64) {
+    let (a11, a12, a21, a22, b1, b2, c) = points2quadric(points);
+
+    let (a11dm, a12dm, a21dm, a22dm, b1dm, b2dm) = derive_dm(a11, a12, a21, a22, b1, b2);
+    let (a11dn, a12dn, a21dn, a22dn, b1dn, b2dn) = derive_dn(a11, a12, a21, a22, b1, b2);
+    let (_, _, _, a22dndn, _, _) = derive_dndn(a11dn, a12dn, a21dn, a22dn, b1dn, b2dn);
+    let (_, a12dmdn, a21dmdn, _, _, _) = derive_dmdn(a11dm, a12dm, a21dm, a22dm, b1dm, b2dm);
+    let (a11dmdm, _, _, _, _, _) = derive_dmdm(a11dm, a12dm, a21dm, a22dm, b1dm, b2dm);
+    // set gradient = 0
+    let (root1, root2) = solve2x2matrix(
+        a11dm,
+        a12dm + a21dm,
+        a22dn,
+        a12dn + a21dn,
+        -1.0 * b1dm,
+        -1.0 * b2dn,
+    );
+    (root1, root2)
+}
