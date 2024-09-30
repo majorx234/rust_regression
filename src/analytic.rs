@@ -17,7 +17,7 @@ impl LinearRegression for Analytic {
         }
     }
     fn step(self: Self) -> (f64, f64) {
-        (0.0, 0.0)
+        calc_regression_fct(self.points)
     }
 }
 
