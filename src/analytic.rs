@@ -12,7 +12,7 @@ impl LinearRegression for Analytic {
         Self {
             m: 0.0,
             n: 0.0,
-            points: Vec::new(),
+            points,
             learn_rate: 0.0,
         }
     }
