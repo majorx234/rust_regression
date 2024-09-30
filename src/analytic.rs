@@ -1,6 +1,6 @@
 use crate::model::LinearRegression;
 
-struct Analytic {
+pub struct Analytic {
     m: f64,
     n: f64,
     points: Vec<(f64, f64)>,
@@ -109,7 +109,7 @@ fn solve2x2matrix(a11: f64, a12: f64, a21: f64, a22: f64, b1: f64, b2: f64) -> (
     (root1, root2)
 }
 
-fn calc_regression_fct(points: Vec<(f64, f64)>) -> (f64, f64) {
+pub fn calc_regression_fct(points: Vec<(f64, f64)>) -> (f64, f64) {
     let (a11, a12, a21, a22, b1, b2, c) = points2quadric(points);
 
     let (a11dm, a12dm, a21dm, a22dm, b1dm, b2dm) = derive_dm(a11, a12, a21, a22, b1, b2);
